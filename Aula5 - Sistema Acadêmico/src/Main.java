@@ -8,6 +8,7 @@ public class Main {
         Scanner sc2 = new Scanner(System.in).useLocale(Locale.US);  // Para números
 
         String escolha;
+        boolean flag = false;
 
         do {
             System.out.print("Cadastrar professor (1) ou aluno (2): ");
@@ -25,6 +26,7 @@ public class Main {
                     prof1.setEspecializacao(sc1.nextLine());
                     System.out.print("Digite seu salário: ");
                     prof1.setSalario(sc2.nextDouble());
+                    flag = true;
                     break;
                 case "2":
                     System.out.println("CADASTRO DE ALUNO");
@@ -39,11 +41,13 @@ public class Main {
                     aluno1.setNota2(sc2.nextDouble());
                     aluno1.calcularMedia(aluno1.getNota1(), aluno1.getNota2());
                     System.out.println("Média: " + aluno1.getMedia());
+                    flag = true;
                     break;
                 default:
                     System.out.println("Inválido. Escolha 1 ou 2.");
+                    flag = false;
                     break;
             }
-        } while(escolha != "1" && escolha != "2");  // CORRIGIR!
+        } while(flag == false);
     }
 }
